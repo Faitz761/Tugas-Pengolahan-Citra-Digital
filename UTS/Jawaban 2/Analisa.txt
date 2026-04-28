@@ -1,0 +1,48 @@
+Mohon maaf output gambarnya kurang jelas karena memang fotonya kurang berwarna dan warnanya cuman simple.
+
+1. PERBANDINGAN VISUAL DAN NILAI PIKSEL RATA-RATA
+
+   a. Citra Original
+      - Visual Gambar asli dengan detail dan kontras normal.
+      - Rata-rata Piksel Menjadi nilai referensi dasar.
+
+   b. Low Pass Filter (LPF)  Blur
+      - Visual Gambar tampak lebih halus dan kabur. Detail tajam dan noise
+        berkurang karena nilai piksel tetangga dirata-ratakan.
+      - Rata-rata Piksel Nilainya hampir sama dengan citra asli. Hal ini
+        terjadi karena jumlah total nilai dalam kernel LPF adalah 1 
+        (19 x 9 = 1), sehingga energi cahayaintensitas tetap terjaga.
+
+   c. High Pass Filter (HPF)  Deteksi Tepi
+      - Visual Gambar didominasi warna hitam, hanya menyisakan garis-garis
+        tepi objek yang berwarna terang.
+      - Rata-rata Piksel Nilainya menurun drastis hingga mendekati nol.
+        Penyebabnya adalah jumlah total nilai kernel HPF adalah 0 
+        (-18 + 8 = 0), sehingga area dengan intensitas warna yang seragam
+        akan dihapus (menjadi hitam).
+
+   d. Band Pass Filter (BPF)  Sharpening
+      - Visual Gambar terlihat lebih tajam. Tepi-tepi objek lebih menonjol
+        dibandingkan citra asli, memberikan kesan fokus yang lebih kuat.
+      - Rata-rata Piksel Nilainya mirip atau sedikit lebih tinggi dari citra
+        asli karena kernel ini mempertahankan komponen dasar gambar sambil
+        memperkuat perbedaan kontras pada tepi objek.
+
+2. HUBUNGAN DOMAIN SPASIAL DAN DOMAIN FREKUENSI
+
+   Dalam pengolahan citra, terdapat hubungan erat antara perubahan nilai 
+   piksel di Domain Spasial (koordinat gambar) dengan Domain Frekuensi
+
+   - Low Pass Filter (LPF) Di domain frekuensi, filter ini bekerja dengan
+     membuang frekuensi tinggi (perubahan piksel yang mendadaknoise) dan 
+     hanya memasukkan frekuensi rendah (gradasi halus). Hasilnya di domain
+     spasial adalah efek pengaburan (blur).
+
+   - High Pass Filter (HPF) Kebalikan dari LPF, yaitu filter ini membuang frekuensi
+     rendah (area warna solid) dan meloloskan frekuensi tinggi (perubahan
+     intensitas yang tajam). Di domain spasial, ini menghasilkan deteksi tepi.
+
+   - Band Pass Filter (BPF) Pada kernel sharpening ini, sistem mempertahankan
+     frekuensi rendah agar konten asli tetap terlihat, namun sekaligus memperkuat
+     rentang frekuensi tinggi tertentu agar detail tepi di domain spasial 
+     menjadi lebih tajam.
