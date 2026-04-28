@@ -1,0 +1,14 @@
+1. Perbedaan Persebaran Nilai Keabuan
+a). Citra Asli
+Persebaran nilai keabuan biasanya bergantung pada pencahayaan foto asli. Jika foto gelap, maka histogram akan menumpuk di bagian kiri (mendekati 0). Sedangkan jika terang, maka akan menumpuk di bagian kanan (mendekati 255).
+
+b). Citra Negatif
+Histogramnya adalah kebalikan (mirror) dari citra asli, yaitu nilai pixel yang tadinya rendah (gelap) menjadi tinggi (terang), dan sebaliknya. Secara visual, bentuk histogram tetap sama, tapi hanya posisinya aja yang tertukar secara horizontal.
+
+c). Citra Logaritmik
+Transformasi ini cenderung merentangkan (expand) nilai pixel yang rendah dan menekan (compress) nilai pixel yang tinggi. Histogram citra logaritmik biasanya akan lebih menyebar ke arah kanan (lebih terang) dibandingkan citra aslinya yang gelap, karena nilai-nilai gelap dipaksa naik secara signifikan.
+
+2. Kapan Logaritmik Lebih Bermanfaat dibanding Negatif?
+Transformasi Negatif paling bermanfaat ketika kita ingin menonjolkan detail berwarna putih/terang di atas latar belakang (background) yang gelap. Contoh: pada citra medis seperti X-Ray, di mana fitur tubuh yang putih akan jadi lebih mudah dianalisis jika latar belakangnya (background) diubah.
+
+Transformasi Logaritmik lebih bermanfaat pada citra yang memiliki rentang dinamis (dynamic range) yang sangat luas namun detailnya tersembunyi di area gelap. Contoh: pada hasil Spektrum Fourier atau foto yang sangat gelap (underexposed). Logaritma membantu memperjelas detail di area gelap itu tanpa membuat area yang sudah terang menjadi "pecah" (overexposed) secara berlebihan.
